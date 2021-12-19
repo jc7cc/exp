@@ -1,0 +1,10 @@
+name = "Exp"
+license = "MIT"
+licenselink = "https://github.com/sunzhe96/exp/blob/master/LICENSE"
+description = "A hugo theme for creating resumes"
+homepage = "https://github.com/sunzhe96/exp"
+min_version = "0.41.0"
+
+[author]
+  name = "Zhe Sun"
+  homepage = "https://sunzhe.info"
