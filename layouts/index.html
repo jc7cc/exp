@@ -1,0 +1,52 @@
+{{ define "main" }}
+
+<!-- counter is used for controlling header,
+     which should only print one time-->
+{{ $counter := 1 }}
+{{ $site := .Site }}
+{{- range $page := .Site.Data.pages -}} 
+
+<div class="page">
+  {{if eq $counter 1}}
+  {{ partial "contacts.html" $site }}
+  {{ $counter = 0 }}
+  {{ end }}
+
+  {{ $section := index $page 0 }}
+  {{ range $sectionName, $sectionContent := $section }}
+  <div class="section">
+    <h1 class="section__title">{{ $sectionName }}</h1> 
+    {{- range $entry, $content := index $sectionContent 0 -}}
+
+    <!-- get enry map -->
+    {{ $entryMap := index $content 0}}
+
+    {{$title := index $entryMap "title"}}
+    {{$side := index $entryMap "side"}}
+    {{$description := index $entryMap "description"}}
+
+    <div class="entry">
+      <div class="side">
+	<span>{{$side}}</span>
+      </div>
+
+      <div class="description">
+	<h2>{{$title}}</h2>
+	<ul>
+	  {{ range $value := $description }}
+	  <li>{{$value}}</li>
+	  <!-- end description-->
+	  {{ end }}
+	</ul>
+      </div>
+    </div>
+    <!-- end entry -->
+    {{ end }} 
+    <!-- end section -->
+  </div>
+  {{ end }} 
+</div>
+<!-- end page -->
+{{ end }} 
+<!-- end main -->
+{{ end }} 

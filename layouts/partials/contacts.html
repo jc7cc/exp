@@ -1,0 +1,22 @@
+{{ $phone := .Site.Data.contacts.phone }}
+{{ $email := .Site.Data.contacts.email }}
+{{ $links := .Site.Data.contacts.links }}
+{{ $title := .Site.Title }}
+
+<!-- header: shows title (normally user's name), contacts information-->
+<div class="flex-between header">
+  <h1 class="title">{{ $title }}</h1>    
+  <ul>
+    {{ range $key, $value := $phone }}
+    <li>{{$value}}</li>
+    {{ end }}
+
+    {{ range $key, $value := $email }}
+    <li><a href="mailto:{{$value}}">{{$value}}</a></li>
+    {{ end }}
+
+    {{ range $key, $value := $links }}
+    <li><a href="{{$value}}" target="_blank">{{$key}}</a></li>
+    {{ end }}
+  </ul>
+</div>
